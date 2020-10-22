@@ -23,8 +23,14 @@ npm install cypress-routines --save-dev
 In `cypress/plugins/index.js`:
 
 ```js
-module.exports = (on, config) => {
-	require('cypress-routines/plugin')(on, config)
+module.exports = async (on, config) => {
+	const db = await connectDb()
+
+	// All arguments after `on, config` are passed along
+	// to the routine-factories. In this case, we're passing
+	// `{ db }` so that every routines-file can access the db
+	// if it needs to.
+	require('cypress-routines/plugin')(on, config, { db })
 }
 ```
 
@@ -53,6 +59,11 @@ In `cypress.json`:
 Let's assume you're writing `login.spec.js` to test your login flow. To create some server-side setups, create `login.routines.js`:
 
 ```js
+// cypress/integration/login.routines.js
+
+// You can customize the arguments to this function in
+// `cypress/plugins/index.js`. See the installation guide
+// above for more info.
 function loginRoutines({ db }) {
 	return {
 		createUser() {
@@ -73,6 +84,8 @@ function loginRoutines({ db }) {
 ### 2. Call the routine from your spec-file
 
 ```js
+// cypress/integration/login.spec.js
+
 describe('Login', function () {
 	it('redirects to the dashboard after successful login', function () {
 		cy.routine('createUser').then((testUser) => {
