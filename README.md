@@ -11,7 +11,11 @@ This package allows you to easily write setup code for your Cypress tests that r
 ### 1. Install cypress-routines
 
 ```bash
+# With yarn:
 yarn add cypress-routines --dev
+
+# With npm:
+npm install cypress-routines --save-dev
 ```
 
 ### 2. Require plugin-file
