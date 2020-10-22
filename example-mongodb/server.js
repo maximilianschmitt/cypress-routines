@@ -16,7 +16,16 @@ async function start(port = 3000) {
 			const users = await db.collection('users').find({}).toArray()
 
 			res.type('html')
-			res.send(`<ul>${users.map((user) => `<li>${user.firstName} ${user.lastName} (${user.email})`)}</ul>`)
+			res.send(
+				`
+					<ul>
+						${users
+							.map((user) => {
+								return `<li>${user.firstName} ${user.lastName} (${user.email})</li>`
+							})
+							.join('')}
+					</ul>`
+			)
 		} catch (err) {
 			next(err)
 		}
