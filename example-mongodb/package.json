@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "cypress": "^5.4.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2"
+  }
+}
