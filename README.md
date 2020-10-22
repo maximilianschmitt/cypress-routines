@@ -19,7 +19,9 @@ yarn add cypress-routines --dev
 In `cypress/plugins/index.js`:
 
 ```js
-require('cypress-routines/plugin')(on, config)
+module.exports = (on, config) => {
+	require('cypress-routines/plugin')(on, config)
+}
 ```
 
 ### 3. Require support-file
