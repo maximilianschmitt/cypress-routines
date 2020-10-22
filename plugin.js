@@ -1,6 +1,6 @@
 const path = require('path')
 
-function cypressRoutinesPlugin(on, config, getConstructorArgs = () => {}) {
+function cypressRoutinesPlugin(on, config, ...routineArgs) {
 	on('task', {
 		routine({ testFile, routineName, isGlobalRoutine, args }) {
 			const testFileName = path.basename(testFile)
@@ -20,7 +20,7 @@ function cypressRoutinesPlugin(on, config, getConstructorArgs = () => {}) {
 				throw new Error(`Could not require routines file: ${routinesFile}`)
 			}
 
-			const routines = createRoutinesObject(...[].concat(getConstructorArgs()))
+			const routines = createRoutinesObject(...[].concat(routineArgs))
 
 			const routine = routines[routineName]
 			if (!routine) {
