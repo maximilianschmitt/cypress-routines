@@ -1,0 +1,7 @@
+{
+	"name": "cypress-routines",
+	"main": "./index.js",
+	"devDependencies": {
+		"cypress": "^5.4.0"
+	}
+}
