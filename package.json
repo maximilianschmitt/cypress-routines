@@ -2,6 +2,11 @@
 	"name": "cypress-routines",
 	"version": "1.0.0",
 	"main": "./index.js",
+	"author": {
+		"name": "Maximilian Schmitt",
+		"email": "maximilian.schmitt@googlemail.com",
+		"url": "https://maxschmitt.me"
+	},
 	"devDependencies": {
 		"cypress": "^5.4.0"
 	}
