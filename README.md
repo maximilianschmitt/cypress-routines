@@ -45,3 +45,39 @@ In `cypress.json`:
 	"ignoreTestFiles": ["*.routines.js"]
 }
 ```
+
+## Usage
+
+### 1. Create a routines-file next to your spec-file
+
+Let's assume you're writing `login.spec.js` to test your login flow. To create some server-side setups, create `login.routines.js`:
+
+```js
+function loginRoutines({ db }) {
+	return {
+		createUser() {
+			const testUser = {
+				_id: new ObjectId(),
+				email: 'maximilian.schmitt@googlemail.com',
+				hashedPassword: hashPassword('123456')
+			}
+
+			await db.collection('users').insertOne(testUser)
+
+			return testUser
+		}
+	}
+}
+```
+
+### 2. Call the routine from your spec-file
+
+```js
+describe('Login', function () {
+	it('redirects to the dashboard after successful login', function () {
+		cy.routine('createUser').then((testUser) => {
+			// ...
+		})
+	})
+})
+```
