@@ -33,8 +33,9 @@ In `cypress/plugins/index.js`:
 
 ```js
 module.exports = async (on, config) => {
-	const db = await connectDb()
+	const db = await connectDb() // 👈 Example
 
+	// After `on, config`, you can pass e.g. db    👇
 	require('cypress-routines/plugin')(on, config, db)
 }
 ```
