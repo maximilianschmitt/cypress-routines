@@ -2,6 +2,7 @@
 	"name": "cypress-routines",
 	"version": "1.0.0",
 	"main": "./index.js",
+	"license": "MIT",
 	"author": {
 		"name": "Maximilian Schmitt",
 		"email": "maximilian.schmitt@googlemail.com",
