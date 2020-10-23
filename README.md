@@ -52,7 +52,7 @@ In `cypress.json`:
 
 ### Where do I put my routines?
 
-Routines are scoped to their respective spec-file:
+Routines live next to their respective spec-file:
 
 ```
 cypress/
@@ -63,11 +63,11 @@ cypress/
 		signup.routines.js
 ```
 
+You can also define [global routines](#global-routines).
+
 ### Writing routines
 
-A routines-file is a simple node.js module that exports a factory-function that returns an object with functions ("routines") attached to it.
-
-These functions are the routines that can be called from their respective spec-file.
+A routines-file is a simple node.js module that exports a factory-function that returns an object with functions ("routines") attached to it:
 
 ```js
 // cypress/integration/login.routines.js
@@ -86,6 +86,14 @@ module.exports = loginRoutines
 ```
 
 The return-value of the routine will be accessible from the spec-file in the browser context, so it must be JSON-serializable.
+
+Above routines file can be used from `login.spec.js` like so:
+
+```js
+cy.routine('createUser', { email: '...' }).then(() => {
+	// ...
+})
+```
 
 ### Giving routines access to the database
 
@@ -122,6 +130,8 @@ it('logs in the user', function () {
 	})
 })
 ```
+
+`cy.routine()`, like other Cypress commands, is asynchronous and cannot be used with async/await. Read here for [more info on async commands](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Asynchronous).
 
 ### Sharing routines across spec-files
 
