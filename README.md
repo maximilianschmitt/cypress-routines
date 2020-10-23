@@ -1,8 +1,12 @@
+<p align="center">
+  <img src="logo@2x.png" width="210" alt="cypress-routines">
+    <br>
+	Simple scalable server-side setups for Cypress
+</p>
+
+---
+
 # cypress-routines
-
-Simple scalable server-side setups for Cypress.
-
-## What is it?
 
 This package allows you to easily write setup code for your Cypress tests that runs in a Node.js process. This is helpful when your setup code needs to interact with a database for example.
 
