@@ -50,6 +50,14 @@ In `cypress.json`:
 
 ## Usage guide
 
+-   [Where do I put my routines?](#where-do-i-put-my-routines-)
+-   [Writing routines](#writing-routines)
+-   [Giving routines access to the database](#giving-routines-access-to-the-database)
+-   [Calling routines](#calling-routines)
+-   [Sharing routines across spec-files](#sharing-routines-across-spec-files)
+-   [Global routines](#global-routines)
+-   [Sharing routine functions](#sharing-routine-functions)
+
 ### Where do I put my routines?
 
 Routines live next to their respective spec-file:
