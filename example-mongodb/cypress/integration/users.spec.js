@@ -3,16 +3,8 @@
 describe('Users', function () {
 	it('shows all users', function () {
 		const users = [
-			{
-				firstName: 'John',
-				lastName: 'Doe',
-				email: 'john.doe@example.com',
-			},
-			{
-				firstName: 'Jane',
-				lastName: 'Bane',
-				email: 'jane.bane@example.com',
-			},
+			{ firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
+			{ firstName: 'Jane', lastName: 'Bane', email: 'jane.bane@example.com' },
 		]
 
 		cy.routine('createUsers', users).then(() => {
