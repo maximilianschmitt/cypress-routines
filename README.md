@@ -1,14 +1,19 @@
 <p align="center">
   <img src="logo@2x.png" width="210" alt="cypress-routines">
     <br>
-	Simple scalable server-side setups for Cypress
+	Easily write scalable Node.js setup code for Cypress
 </p>
 
 ---
 
 # cypress-routines
 
-This package allows you to easily write setup code for your Cypress tests that runs in a Node.js process. This is helpful when your setup code needs to interact with a database for example.
+## Motivation
+
+`cy.task()` allows Cypress users to run code in a Node.js process.
+
+However, all Cypress tasks run in a global namespace and as your app grows, you will need many different test-setups that are more or less
+unique to their respective spec-files. `cypress-routines` enables you to organize your test setups, run them in Node.js and keep them easily discoverable as your app and test suite grow.
 
 ## Installation
 
