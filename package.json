@@ -8,6 +8,11 @@
 		"email": "maximilian.schmitt@googlemail.com",
 		"url": "https://maxschmitt.me"
 	},
+	"homepage": "https://github.com/maximilianschmitt/cypress-routines",
+	"repository": {
+		"url": "https://github.com/maximilianschmitt/cypress-routines.git",
+		"type": "git"
+	},
 	"devDependencies": {
 		"cypress": "^5.4.0"
 	}
