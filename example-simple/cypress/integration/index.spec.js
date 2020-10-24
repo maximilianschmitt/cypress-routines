@@ -1,7 +1,7 @@
 describe('Index', function () {
 	it('says hello', function () {
 		cy.routine('hello').then((response) => {
-			console.log(response)
+			expect(response).to.deep.equal({ message: 'Hello from the routine!' })
 		})
 	})
 })
