@@ -13,7 +13,7 @@
 `cy.task()` allows Cypress users to run code in a Node.js process.
 However, all Cypress tasks run in a global namespace and as your app and number of different test setups grow, relying on `cy.task()` for test setups can become hard to maintain.
 
-`cypress-routines` enables you to organize your test setups neatly per spec-file. Routines run in Node.js, so you can easily access things like databases and file systems and in your test setups.
+`cypress-routines` enables you to organize your test setups neatly per spec-file. Routines run in Node.js, so you can easily access things like databases and file systems in your test setups.
 
 ## Installation
 
