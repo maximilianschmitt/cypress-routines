@@ -115,7 +115,7 @@ cy.routine('createUser', { email: '...' }).then(() => {
 
 ### Giving routines access to the database
 
-Go into your Cypress support-file and pass the `db` (and any other parameters you like) after `on, config` to the function that's required as `cypress-routines/plugin`.
+Go into your Cypress support-file and pass the `db` (or any other parameters you like) after `on, config` to the function that's required as `cypress-routines/plugin`.
 
 ```js
 // cypress/support/index.js
