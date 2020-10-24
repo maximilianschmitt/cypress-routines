@@ -115,6 +115,8 @@ cy.routine('createUser', { email: '...' }).then(() => {
 
 ### Giving routines access to the database
 
+Go into your Cypress support-file and pass the `db` (and any other parameters you like) after `on, config` to the function that's required as `cypress-routines/plugin`.
+
 ```js
 // cypress/support/index.js
 
@@ -123,10 +125,24 @@ module.exports = async (on, config) => {
 
 	// All arguments after `on, config` are passed along
 	// to the routine-factories. In this case, we're passing
-	// `{ db }` so that every routines-file can access the db
+	// `db` so that every routines-file can access the db
 	// if it needs to.
-	require('cypress-routines/plugin')(on, config, db)
+	require('cypress-routines/plugin')(on, config, db, param2, param3 /* etc. */)
 }
+```
+
+The factory-functions in your routines files now have access to those params.
+
+```js
+// cypress/integration/login.routines.js
+
+function loginRoutines(db, param2, param3 /* etc. */) {
+	return {
+		// ...
+	}
+}
+
+module.exports = loginRoutines
 ```
 
 ### Calling routines
@@ -137,12 +153,12 @@ Routines are called with `cy.routine(routineName: string, routineArg?: any)`. A 
 // cypress/integration/login.spec.js
 
 it('logs in the user', function () {
-	const testUser = {
-		email: 'maximilian.schmitt@googlemail.com',
+	const routineArg = {
+		email: 'max@maxschmitt.me',
 		hashedPassword: hashPassword('123456'),
 	}
 
-	cy.routine('createUser', testUser).then(() => {
+	cy.routine('createUser', routineArg).then(() => {
 		cy.visit('login')
 		// ...
 	})
