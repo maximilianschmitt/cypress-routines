@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo@2x.png" width="210" alt="cypress-routines">
+  <img src="logo@2x.png" width="210" height="63 alt="cypress-routines">
     <br>
 	Easily write scalable Node.js setup code for Cypress
 </p>
@@ -14,6 +14,13 @@
 However, all Cypress tasks run in a global namespace and as your app and number of different test setups grow, relying on `cy.task()` for test setups can become hard to maintain.
 
 `cypress-routines` enables you to organize your test setups neatly per spec-file. Routines run in Node.js, so you can easily access things like databases and file systems in your test setups.
+
+## Screencast
+
+<a href="https://www.youtube.com/watch?v=eje9dQ2Y-q0">
+	<img src="screencast-thumbnail.png" width="300" height="169" alt="cypress-routines screencast"><br>
+	Using cypress-routines to write and organize test setups that run in Node.js
+</a>
 
 ## Installation
 
