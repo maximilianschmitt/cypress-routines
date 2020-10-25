@@ -112,7 +112,7 @@ module.exports = loginRoutines
 
 The return-value of the routine will be accessible from the spec-file in the browser context, so it must be JSON-serializable.
 
-Above routines file can be used from `login.spec.js` like so:
+The `createUser` routine from `login.routines.js` can be used from `login.spec.js` like so:
 
 ```js
 cy.routine('createUser', { email: '...' }).then(() => {
@@ -122,10 +122,10 @@ cy.routine('createUser', { email: '...' }).then(() => {
 
 ### Giving routines access to the database
 
-Go into your Cypress support-file and pass the `db` (or any other parameters you like) after `on, config` to the function that's required as `cypress-routines/plugin`.
+In your Cypress plugin-file, pass the `db` (or any other parameters you like) after `on, config` to the function that's required as `cypress-routines/plugin`.
 
 ```js
-// cypress/support/index.js
+// cypress/plugin/index.js
 
 module.exports = async (on, config) => {
 	const db = await connectDb()
@@ -172,7 +172,9 @@ it('logs in the user', function () {
 })
 ```
 
-`cy.routine()`, like other Cypress commands, is asynchronous and cannot be used with async/await. Read here for [more info on async commands](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Asynchronous).
+`a.spec.js`, can only call routines defined in `a.routines.js` (not `b.routines.js`).
+
+`cy.routine()`, like other Cypress commands, is asynchronous but cannot be used with async/await. Read here for [more info on async commands](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Asynchronous).
 
 ### Sharing routines across spec-files
 
@@ -185,7 +187,7 @@ In some cases, you might want to reuse certain routines. There are two options f
 
 ### Global routines
 
-Global routines can be defined in `cypress/integration/global-routines.js`. It looks like any other routines-file:
+Global routines can be defined in `cypress/integration/global-routines.js`. The global routines-file looks like any other routines-file:
 
 ```js
 // cypress/global-routines.js
@@ -208,12 +210,13 @@ function globalRoutines(db) {
 module.exports = globalRoutines
 ```
 
-Global routines are called like regular routines, but prefixed with a `'/'`:
+Global routines are called like regular routines, but with a leading `'/'`:
 
 ```js
 // cypress/integration/login.spec.js
 
 it('logs in the user', function () {
+	//         👇 Leading '/'
 	cy.routine('/createDefaultUser').then((testUser) => {
 		cy.visit('login')
 		// ...
