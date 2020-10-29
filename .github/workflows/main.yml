@@ -37,12 +37,19 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
-          cd example-barebones
-          yarn
-          cd ..
+          for exampledir in example-*
+          do
+              cd "$exampledir"
+              yarn
+              cd ..
+          done
 
       # Runs a set of commands using the runners shell
       - name: Run tests
         run: |
-          cd example-barebones
-          yarn cypress run
+          for exampledir in example-*
+          do
+              cd "$exampledir"
+              yarn cypress run
+              cd ..
+          done
