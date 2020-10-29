@@ -6,6 +6,9 @@
 
 ---
 
+![CI Badge](https://github.com/maximilianschmitt/cypress-routines/workflows/CI/badge.svg)
+[![npm weekly downloads Badge](https://badgen.net/npm/dw/cypress-routines)](https://www.npmjs.com/package/cypress-routines)
+
 # cypress-routines
 
 ## Motivation
